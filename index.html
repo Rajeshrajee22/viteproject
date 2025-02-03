@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #f8f8f8;
+        }
+
+        .logo {
+            margin-left: 100px;
+            font-size: 24px;
+            font-weight: 800;
+            color: rgb(255, 40, 190);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            color: #d30f6e;
+        }
+
+        main {
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+            height: 100%;
+            width: 100%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .section-card {
+            width: 5%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        .section-card.expanded {
+            width: 90%;
+            font-size: 25px;
+        }
+
+        .section-card span {
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+            transform: rotate(-90deg);
+            white-space: nowrap;
+        }
+
+        .section-card.expanded span {
+            transform: rotate(0deg);
+        }
+
+        .team-card {
+            background-color: white;
+            color: rgb(0, 0, 0);
+        }
+
+        .details-card {
+            background-color: #d30f6e;
+            color: white;
+        }
+
+        .contact-card {
+            background-color: #FF5722;
+            color: white;
+        }
+
+        .team-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .section-card.expanded .team-section {
+            display: flex;
+        }
+
+        .team-description {
+    max-width: 800px;
+    margin: 20px auto;
+    line-height: 1.6;
+    text-align: justify;
+    padding: 0 20px;
+    font-size: 16px;
+    padding-right: 850px;
+}
+
+.team-mission {
+    max-width: 800px;
+    margin: 20px auto;
+    line-height: 1.6;
+    text-align: justify;
+    padding: 0 20px;
+    font-size: 16px;
+
+}
+
+        .team-container {
+            display: flex;
+            gap: 100px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .team-member {
+            /* width: 350px; */
+            /* background-color: aqua; */
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .team-member img {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Form styles */
+        .form-container {
+            display: none;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .section-card.expanded .form-container {
+            display: block;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 100px;
+        }
+        .contact-section {
+        display: none;
+        /* background-color: aqua; */
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        width: 100%;
+    
+        /* padding: 20px; */
+        
+    }
+
+    .section-card.expanded .contact-section {
+        display: flex;
+    }
+
+    .contact-content {
+        max-width: 800px;
+        margin: 20px auto;
+        text-align: left;
+    }
+
+    .contact-description {
+        line-height: 1.6;
+        font-size: 16px;
+        margin-bottom: 30px;
+        color: white;
+    }
+
+   
+   
+    .contact-details p {
+        margin: 10px 0;
+        color: white;
+    }
+
+    .contact-section h1 {
+        color: white;
+        margin-bottom: 20px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">LOGO</h1>
+        <nav>
+            <ul>
+                <li><a onclick="expandCard(document.querySelector('.team-card'))">OUR TEAM</a></li>
+                <li><a onclick="expandCard(document.querySelector('.details-card'))">PERSONAL DETAILS</a></li>
+                <li><a onclick="expandCard(document.querySelector('.contact-card'))">CONTACT US</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="section-card team-card" onclick="expandCard(this)">
+            <span>
+                <section class="team-section">
+                    <h1>Our Team</h1>
+                    <p class="team-description">
+                        We believe that great ideas come to life through collaboration and innovation. Our team is a <br>diverse group of passionate professionals, 
+                        each bringing unique skills and experiences to the table. <br> From creative designers and strategic thinkers to technical experts and problem-solvers, 
+                        we are <br> united by a shared vision of delivering excellence in everything we do.
+                    </p>
+                    <p class="team-description">
+                        our mission is to empower businesses and individuals by creating innovative, sustainable and <br> user-friendly designs. with a culture that value integrity,growt, and teamwork, we are <br> committed to creating meaningful solution that make a difference. Whether it's crafting cutting- <br> edge designs, developing user-centered interface, or building sustainable solutions, our team <br> thrives on  turning challenges into opportunities.
+                    </p>
+                    <div class="team-container">
+                        <div class="team-member" >
+                            <img src="/th-3502657158.jpg" alt="Meredith Allen" >
+                            <h3>Meredith Allen</h3>
+                            <p>CEO</p>
+                        </div>
+                        <div class="team-member" >
+                            <img src="/th-3766164964.jpg" alt="Thomas Woodward"  >
+                            <h3>Thomas Woodward</h3>
+                            <p>COO</p>
+                        </div>
+                        <div class="team-member" >
+                            <img src="/th-3800417330.jpg" alt="Wade Barton"  >
+                            <h3>Wade Barton</h3>
+                            <p>Business Analyst</p>
+                        </div>
+                        <div class="team-member" >
+                            <img src="/th-3820249590.jpg" alt="Yahir Marquez"  >
+                            <h3>Yahir Marquez</h3>
+                            <p>Marketing Executive</p>
+                        </div>
+                    </div>
+                </section>
+                OUR TEAM
+            </span>
+        </div>
+        <div class="section-card details-card" onclick="expandCard(this)">
+            <span>
+                <div class="form-container">
+                    <h1>Personal Details</h1>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" placeholder="Enter Your Name">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" placeholder="Enter Your Mobile Number">
+                        </div>
+                        <textarea placeholder="Enter Your Address"></textarea>
+                    </form>
+                </div>
+                PERSONAL DETAILS
+            </span>
+        </div>
+        <div class="section-card contact-card" onclick="expandCard(this)">
+            <span>
+                <section class="contact-section">
+                    <h1>Contact Us</h1>
+                    <div class="contact-content">
+                        <p class="contact-description">
+                            We are a team of engineers, communication experts, and innovators who specialize in developing  technology propositions for the  <br>world around us. We noticed that in an overwhelming number of use cases, technology was not really the problem; mistrust came <br> from how it was  deployed by creators and then understood by users and consumers.
+                        </p>
+                    </div>
+                </section>
+                CONTACT US
+            </span>
+        </div>
+    </main>
+
+    <script>
+        function expandCard(selectedCard) {
+            document.querySelectorAll('.section-card').forEach(card => {
+                if (card === selectedCard) {
+                    card.classList.toggle('expanded');
+                } else {
+                    card.classList.remove('expanded');
+                }
+            });
+        }
+
+        // Expand team card by default
+        window.onload = function() {
+            expandCard(document.querySelector('.team-card'));
+        }
+    </script>
+</body>
+</html>
